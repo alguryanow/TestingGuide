@@ -23,3 +23,8 @@ add_executable(${PROJECT_NAME} ${SRC_LIST})
 
 target_link_libraries(${PROJECT_NAME} systemc)       
 
+# testing
+add_executable(unit_test ../tests/unit_test.cpp)
+target_link_libraries(unit_test systemc)
+
+
