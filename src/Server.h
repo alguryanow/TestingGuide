@@ -20,8 +20,12 @@ SC_MODULE(Server){
             int value = data_in.read();
             std::cout << "Server: got value " << value << std::endl;
             //-- отправка ответа
-            data_out.write(value*2);
+            data_out.write( process(value) );
         }
+    }
+
+    int process(value){
+        return value*2;
     }
 
 };
