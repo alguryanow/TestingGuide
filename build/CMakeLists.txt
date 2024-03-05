@@ -30,19 +30,28 @@ target_link_libraries(unit_test systemc)
 # enable testing functionality
 enable_testing()
 
-add_executable(integr_test1 ../tests/integr_test1.cpp)
-target_link_libraries(integr_test1 systemc)
-
 # define tests
 add_test(
   NAME Unit_Tests
   COMMAND $<TARGET_FILE:unit_test>
 )
 
+
+add_executable(integr_test1 ../tests/integr_test1.cpp)
+target_link_libraries(integr_test1 systemc)
+
 add_test(
   NAME Integral_Test_N1
   COMMAND $<TARGET_FILE:integr_test1>
 )
 
+
+add_executable(integr_test2 ../tests/integr_test2.cpp)
+target_link_libraries(integr_test2 systemc)
+
+add_test(
+  NAME Integral_Test_N2
+  COMMAND $<TARGET_FILE:integr_test2>
+)
 
 

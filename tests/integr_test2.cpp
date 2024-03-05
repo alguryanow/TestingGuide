@@ -40,12 +40,12 @@ TEST_CASE("test1")
     client.data_out(client_to_server);
 
 
-    client.m_out_value = 10;
+    client.m_out_value = -10;
 
     //-- собственно моделирование
     sc_start(1, SC_SEC);
     
-    CHECK(client.m_inp_value1 == 20);
-    CHECK(client.m_inp_value2 == 11);
+    CHECK(client.m_inp_value1 == -20);
+    CHECK(client.m_inp_value2 == -9);
 }
 
