@@ -26,6 +26,7 @@ int sc_main(int argc, char* argv[])
     sc_start(1, SC_SEC);
     
     if(client.m_value != 17){
+        std::cout << "!!! FAILURE: expected 17 but got " << client.m_value << std::endl;
         return 1;
     }
 
