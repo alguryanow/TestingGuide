@@ -35,6 +35,11 @@ target_link_libraries(integr_test1 systemc)
 
 # define tests
 add_test(
+  NAME Unit_Tests
+  COMMAND $<TARGET_FILE:unit_test>
+)
+
+add_test(
   NAME Integral_Test_N1
   COMMAND $<TARGET_FILE:integr_test1>
 )
