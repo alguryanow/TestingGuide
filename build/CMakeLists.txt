@@ -27,4 +27,17 @@ target_link_libraries(${PROJECT_NAME} systemc)
 add_executable(unit_test ../tests/unit_test.cpp)
 target_link_libraries(unit_test systemc)
 
+# enable testing functionality
+enable_testing()
+
+add_executable(integr_test1 ../tests/integr_test1.cpp)
+target_link_libraries(integr_test1 systemc)
+
+# define tests
+add_test(
+  NAME Integral_Test_N1
+  COMMAND $<TARGET_FILE:integr_test1>
+)
+
+
 
