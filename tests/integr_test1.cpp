@@ -4,8 +4,22 @@
 #include <systemc>
 using namespace sc_core;
 
+#define DOCTEST_CONFIG_IMPLEMENT
+#include "../../doctest.h"
 
-int sc_main(int argc, char* argv[])
+int sc_main(int argc, char* argv[]) { return 0;} // заглушка для возможности линковки с systemc
+
+int main(int argc, char* argv[])
+{
+    doctest::Context context;
+
+    int res = context.run();
+
+    return res;
+}
+
+
+TEST_CASE("test1")
 {
     //-- Сервер и Клиент
     Server server("SERVER");
@@ -25,12 +39,6 @@ int sc_main(int argc, char* argv[])
     //-- собственно моделирование
     sc_start(1, SC_SEC);
     
-    if(client.m_value != 17){
-        std::cout << "!!! FAILURE: expected 17 but got " << client.m_value << std::endl;
-        return 1;
-    }
-
-    return 0;
-
-};
+    CHECK(client.m_value == 17);
+}
 
