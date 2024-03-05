@@ -25,7 +25,7 @@ SC_MODULE(Server){
     }
 
     int process(int value){
-        return -value*2;    //-- случайно поставил знак -
+        return value*2;    
     }
 
 };
