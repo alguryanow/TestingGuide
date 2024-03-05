@@ -25,7 +25,7 @@ SC_MODULE(Server){
     }
 
     int process(int value){
-        return -value*2;    
+        return value*2;    
     }
 
 };

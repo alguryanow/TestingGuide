@@ -19,9 +19,11 @@ SC_MODULE(Client){
         //-- ожидание ответа
         wait( data_in.data_written_event() );
         //-- приём и распечатка ответа
-        int value = data_in.read(); 
-        std::cout << "Client: got value " << value << std::endl;
+        m_value = data_in.read(); 
+        std::cout << "Client: got value " << m_value << std::endl;
     }
+
+    int m_value;
 
 };
 
