@@ -7,7 +7,6 @@
     sc_start(1, SC_SEC);
     
     //-- проверяю выходные данные
-    CHECK(client.m_inp_value1 == -20);
-    CHECK(client.m_inp_value2 == -9);
+    CHECK(client.m_inp_value == -20);
 }
 

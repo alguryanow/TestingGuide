@@ -13,16 +13,13 @@ int sc_main(int argc, char* argv[])
 
     //-- через что они будут обмениваться
     sc_fifo<int> client_to_server;
-    sc_fifo<int> server_to_client1;
-    sc_fifo<int> server_to_client2;
+    sc_fifo<int> server_to_client;
 
     //-- связываю Клиента с Сервером
     server.data_in(client_to_server);
-    server.data_out1(server_to_client1);
-    server.data_out2(server_to_client2);
+    server.data_out(server_to_client);
 
-    client.data_in1(server_to_client1);
-    client.data_in2(server_to_client2);
+    client.data_in(server_to_client);
     client.data_out(client_to_server);
 
     //-- собственно моделирование

@@ -6,8 +6,7 @@ using namespace sc_core;
 
 SC_MODULE(Client){
     sc_fifo_out<int> data_out;  ///* для отправки Серверу
-    sc_fifo_in<int> data_in1;    ///* для приёма ПЕРВОГО ответа от Сервера
-    sc_fifo_in<int> data_in2;    ///* для приёма ВТОРОГО ответа от Сервера
+    sc_fifo_in<int> data_in;    ///* для приёма ответа от Сервера
 
     SC_CTOR(Client){
         SC_THREAD(thread);
@@ -17,18 +16,15 @@ SC_MODULE(Client){
         //-- отправка запроса
         std::cout << "Client: sending " << m_out_value << " to Server" << std::endl;
         data_out.write(m_out_value);  
-        //-- ожидание ВТОРОГО ответа
-        wait( data_in2.data_written_event() );
+        //-- ожидание  ответа
+        wait( data_in.data_written_event() );
         //-- приём и распечатка ответа
-        m_inp_value1 = data_in1.read(); 
-        m_inp_value2 = data_in2.read(); 
-        std::cout << "Client: got values " << m_inp_value1 << " and " << m_inp_value2 << std::endl;
+        m_inp_value = data_in.read(); 
+        std::cout << "Client: got value " << m_inp_value << std::endl;
     }
 
-    int m_out_value;
-    int m_inp_value1;
-    int m_inp_value2;
-
+    int m_out_value;    //-- для возможности задания входных данных
+    int m_inp_value;    //-- для проверки выходных данных
 };
 
 
