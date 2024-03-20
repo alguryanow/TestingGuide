@@ -23,35 +23,24 @@ add_executable(${PROJECT_NAME} ${SRC_LIST})
 
 target_link_libraries(${PROJECT_NAME} systemc)       
 
-# testing
-add_executable(unit_test ../tests/unit_test.cpp)
-target_link_libraries(unit_test systemc)
 
 # enable testing functionality
 enable_testing()
 
+
 # define tests
-add_test(
-  NAME Unit_Tests
-  COMMAND $<TARGET_FILE:unit_test>
-)
 
+function(def_test target)
+  add_executable(${target} ../tests/${target}.cpp)
+  target_link_libraries(${target} systemc)
+  add_test( NAME ${target} COMMAND ./${target} )
+endfunction()
 
-add_executable(integr_test1 ../tests/integr_test1.cpp)
-target_link_libraries(integr_test1 systemc)
+def_test(unit_test)
 
-add_test(
-  NAME Integral_Test_N1
-  COMMAND $<TARGET_FILE:integr_test1>
-)
+def_test(integr_test1)
 
+def_test(integr_test2)
 
-add_executable(integr_test2 ../tests/integr_test2.cpp)
-target_link_libraries(integr_test2 systemc)
-
-add_test(
-  NAME Integral_Test_N2
-  COMMAND $<TARGET_FILE:integr_test2>
-)
 
 
