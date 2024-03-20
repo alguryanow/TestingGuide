@@ -30,17 +30,17 @@ enable_testing()
 
 # define tests
 
-function(def_test target)
+function(def_test target test_name)
   add_executable(${target} ../tests/${target}.cpp)
   target_link_libraries(${target} systemc)
-  add_test( NAME ${target} COMMAND ./${target} )
+  add_test( NAME ${test_name} COMMAND ./${target} )
 endfunction()
 
-def_test(unit_test)
+def_test(unit_test Unit_Tests)
 
-def_test(integr_test1)
+def_test(integr_test1 Integral_Test_N1)
 
-def_test(integr_test2)
+def_test(integr_test2 Integral_Test_N2)
 
 
 
